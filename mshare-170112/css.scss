@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    background: #970000;
+    font-family: 'PINGFANG SC', 'MICROSOFT YAHEI';
+    -webkit-tap-highlight-color: transparent;
+}
+
+dl {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+dd {
+    -webkit-margin-start: 0;
+}
+
+ul {
+    list-style-type: none;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+}
+
+p {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+@function pxToVw($px) {
+    @return $px/750*100*2vw;
+}
+
+@import './header.scss';
+.container {
+    // padding-bottom: 145%;
+    padding-bottom: 147%;
+    position: relative;
+    top: 45px;
+    background: {
+        // image: url('//miz-image.b0.upaiyun.com/xplan/pic/170112.png');
+        image: url('//miz-image.b0.upaiyun.com/xplan/pic/170112-17.png');
+        size: cover;
+    }
+    a {
+        position: absolute;
+        left: 14%;
+        // top: 67%;
+        top: 60%;
+        width: 28%;
+        height: 7%;
+        &#kefu{
+            left: 50%;
+        }
+    }
+}
+
+@supports(font-size:1vw){
+    .container{
+        top:pxToVw(45);
+    }
+}

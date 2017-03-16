@@ -1,0 +1,10 @@
+/*@function pxToVw($px){
+	@return $px * 10vw;
+}*/
+a{
+	color:red;
+	em{ 
+		display: flex;
+		/*font-size:pxToVw(20);*/
+	}
+}

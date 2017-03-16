@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>工资拯救计划</title>
+</head>
+<script>
+    data = {
+        month: 3, //活动月份
+        minHeight: 0,
+        pb: '0px',
+        datas: [{
+            startDate: 9, //第一期开始
+            endDate: 10, //第一期结束
+            products: [{
+                time: '二月期',
+                lilv: '7.0%+1.3%',
+            }, {
+                time: '三月期',
+                lilv: '8.0%+1.0%',
+            }]
+        }, {
+            startDate: 15, //第二期开始
+            endDate: 16, //第二期结束
+            products: [{
+                time: '二月期',
+                lilv: '7.0%+1.3%',
+            }, {
+                time: '三月期',
+                lilv: '8.0%+1.0%',
+            }]
+        }]
+    }
+</script>
+<script>
+    var Mizlicai;
+    (function(Mizlicai) {
+        var userKey = /userKey=([^&]*)/.exec(location.search);
+        if (userKey) {
+            if (userKey[1].length == 0)
+                localStorage.removeItem("auth");
+            else
+                localStorage.setItem("auth", userKey[1]);
+        }
+        var osKey = /os=([^&]+)/.exec(location.search);
+        if (osKey) {
+            osKey = osKey[1];
+        } else {
+            osKey = sessionStorage.getItem("osKey") || "H5";
+        }
+        sessionStorage.setItem("osKey", osKey);
+
+        function login(userKey) {
+            try {
+                if (userKey && userKey.length > 0) {
+                    localStorage.setItem("time", (+new Date()).toString());
+                    localStorage.setItem("auth", userKey);
+                } else
+                    localStorage.removeItem("auth");
+            } catch (e) {
+                alert("您当前处于无痕浏览模式，可能会导致一些异常");
+            }
+        }
+        Mizlicai.login = login;
+    })(Mizlicai || (Mizlicai = {}));
+</script>
+<style>
+    body {
+        margin: 0;
+        background-color: #ffa200;
+        font-family: 'PingFang SC', "Microsoft Yahei";
+    }
+
+    dl {
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+    }
+
+    dd {
+        -webkit-margin-start: 0;
+    }
+
+    #top {
+        width: 100%;
+    }
+
+    #toNext {
+        color: #fff;
+        display: inline-block;
+        width: -webkit-fit-content;
+        width: fit-content;
+        display: block;
+        width: 196px;
+        width: 52.3vw;
+        height: 46px;
+        height: 12.3vw;
+        background-size: contain;
+        margin: 10px auto;
+        margin: 2.67vw auto;
+        background-repeat: no-repeat;
+        background-image: url(data:image/png;base64,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);
+    }
+
+    section {
+        background-color: #fff;
+        font-size: 15px;
+        font-size: 4vw;
+        color: #333;
+        padding: 14px;
+        padding: 3.73vw;
+        margin: 0 10px;
+        margin: 0 2.67vw;
+        border-radius: 4px;
+        border-radius: 1vw;
+    }
+
+    section dt {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        padding-bottom: 15px;
+        padding-bottom: 4vw;
+    }
+
+    section em {
+        font-style: normal;
+        color: #786155;
+        font-size: 13px;
+        font-size: 3.47vw;
+        background: #e3e3e3;
+        width: 18px;
+        width: 4.8vw;
+        height: 18px;
+        height: 4.8vw;
+        border-radius: 50%;
+        display: inline-block;
+        line-height: 18px;
+        line-height: 4.8vw;
+        text-align: center;
+        margin-right: 10px;
+        margin-right: 2vw;
+    }
+
+    section dl {
+        border-bottom: 1px solid #f4f4f4;
+        margin-bottom: 14px;
+        margin-bottom: 3.73vw;
+    }
+
+    section dd {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        line-height: 2.5;
+        font-size: 13px;
+        font-size: 3.47vw;
+        border: 1px solid #f4f4f4;
+        border-width: 1px 1px 0 1px;
+        text-align: center;
+    }
+
+    section dd span,
+    section dd label,
+    section dd div {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+    }
+
+    section dd span:first-child,
+    section dd label {
+        border-right: 1px solid #f4f4f4;
+    }
+
+    section dd label {
+        color: #999;
+    }
+
+    section dd div {
+        color: #ff5600;
+    }
+
+    footer {
+        font-size: 10px;
+        font-size: 2.67vw;
+        /*color: #999;*/
+        color: #fff;
+        text-align: center;
+        margin-top: 13px;
+        margin-top: 3.47vw;
+        padding-bottom: 13px;
+        padding-bottom: 3.47vw;
+    }
+
+    footer span {
+        display: block;
+        opacity: 0.5;
+        font-size: 9px;
+        font-size: 2.4vw;
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+
+    #share {
+        position: fixed;
+        top: 10px;
+        top: 2.67vw;
+        right: 15px;
+        top: 4vw;
+        color: #fff;
+        background: #f0862e;
+        font-size: 12px;
+        font-size: 3.2vw;
+        padding: 4px 8px;
+        padding: 1vw 2.1vw;
+        border-radius: 12px;
+        border-radius: 13.2vw;
+        box-shadow: 0px 3px 1px rgba(240, 134, 46, 0.5);
+        box-shadow: 0px 0.8vw 0.26vw rgba(240, 134, 46, 0.5);
+    }
+</style>
+
+<body>
+    <img src="https://miz-image.b0.upaiyun.com/activities/save/top_201612.jpg" id=top>
+    <header id="share" hidden>
+        分享
+    </header>
+    <a id=toNext href="javascript:;"></a>
+    <section :style='{minHeight:minHeight+"px"}' v-cloak>
+        <dl v-for='(item,index) in datas'>
+            <dt>
+                <em>{{index+1}}</em>{{month}}月第{{['一','二'][index]}}场：{{month}}月{{item.startDate}}日－{{month}}月{{item.endDate}}日
+            </dt>
+            <dd>
+                <span>产品周期</span>
+                <span>预期年化率</span>
+            </dd>
+            <dd v-for='it in item.products'>
+                <label>{{it.time}}</label>
+                <div>{{it.lilv}}</div>
+            </dd>
+        </dl>
+
+    </section>
+    <footer :style='{paddingBottom:pb}'>
+        活动最终解释权归米庄理财所有
+        <span>理财有风险，投资需谨慎！</span>
+    </footer>
+    <div style='display: none;position: fixed;bottom: 0;left: 0;width: 100%;height: 50px;background-color: rgba(0,0,0,0.3);z-index: 1000;' id="J_download">
+        <div style="position: absolute;top: 0;left: 0;z-index:1001;width:0;height:0; border-width:15px;border-style:solid; border-color: #091023 transparent transparent #091023;" id="J_closeDownloadBar">
+            <svg viewBox="0 0 1024 1024" width="10" height="10" style="position: absolute;top: -12px;left: -12px;z-index:1001;">
+                <path d="M614.4 512 1024 102.4 921.6 0 512 409.6 102.4 0 0 102.4 409.6 512 0 921.6 102.4 1024 512 614.4 921.6 1024 1024 921.6 614.4 512Z" fill="#535865" />
+            </svg>
+        </div>
+        <div style="width:71%;display: inline-block;padding: 5px 0">
+            <img style='float: left;width: 40px;margin: 0 10px 0 20px;' src='https://miz-image.b0.upaiyun.com/activities/downloadbar/logo.png' />
+            <div style='height: 40px;color: #FFF;line-height: 20px;'>
+                <p style='padding: 0;margin: 0;font-size: 14px; font-weight: bold;'>上客户端，领专属好礼！</p>
+                <p style='font-size: 12px;padding: 0;margin: 0'>手机理财，首选米庄理财.</p>
+            </div>
+        </div>
+        <div style="position: absolute;top: 10px;right: 0;z-index:1001;">
+            <a style='display: inline-block;width: 100px;height: 34px;margin: 0 5px;background: url("https://miz-image.b0.upaiyun.com/activities/downloadbar/button.png") no-repeat;background-size:100% 100%;' href="/download/"></a>
+        </div>
+    </div>
+</body>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/jquery-3.1.min.js"></script>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/jweixin.js"></script>
+<script src="https://h5.mizlicai.com/activity/mother/share.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.1.5/vue.js"></script>
+<script>
+    $(function() {
+        new Vue({
+            el: 'section',
+            data: data
+        });
+
+        var app = new Vue({
+            el: 'footer',
+            data: {
+                pb: '0px',
+            }
+        })
+
+        if (!getUrlParam('os') && !sessionStorage.getItem("osKey")) {
+            $('.container').css('padding-bottom', '50px');
+            $('#J_download').css('display', 'block');
+            app.pb = '55px';
+        } else if (getUrlParam('os') == 'H5' || sessionStorage.getItem("osKey") == 'H5') {
+            $('.container').css('padding-bottom', '50px');
+            $('#J_download').css('display', 'block');
+            app.pb = '55px';
+        } else {
+            $('#J_download').css('display', 'none');
+            $('#share').show().on('click', function() {
+                window.MizShare.share();
+            });;
+        }
+
+        function getUrlParam(key) {
+            var search = location.search;
+            var arr = !search ? [] : location.search.substr(1).split('&');
+            var param = {};
+            for (var i = 0, l = arr.length; i < l; i++) {
+                var kv = arr[i].split('=');
+                param[kv[0]] = kv[1];
+            }
+            return key ? (param[key] || '') : param;
+        }
+
+        var osKey = /os=([^&]+)/.exec(location.search);
+        if (osKey) {
+            osKey = osKey[1];
+        } else {
+            osKey = sessionStorage.getItem("osKey") || "H5";
+        }
+        sessionStorage.setItem("osKey", osKey);
+
+        $('#toNext').on('click', function() {
+            location.href = location.origin + '/#/products';
+        });
+
+        var shareObj = {
+            sharetext: '为自己“涨薪”，让钱包长胖！', // 分享标题
+            sharedesc: '【米庄工资拯救计划】加薪不靠老板，有米庄就够了！', // 分享描述
+            sharelineLink: location.origin + '/activity/save', // 分享链接
+            shareimgUrl: 'https://miz-image.b0.upaiyun.com/activities/mother/logo.png' // 分享图标
+        };
+        window.MizShare.config(shareObj);
+    })
+</script>
+
+</html>

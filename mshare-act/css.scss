@@ -1,0 +1,389 @@
+body {
+    margin: 0;
+    background: #a61515;
+    font-family: 'PINGFANG SC', 'MICROSOFT YAHEI';
+    -webkit-tap-highlight-color: transparent;
+}
+
+dl {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+dd {
+    -webkit-margin-start: 0;
+}
+
+ul {
+    list-style-type: none;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+}
+
+p{
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+@function pxToVw($px) {
+    @return $px/750*100*2vw;
+}
+
+@import './header.scss';
+@mixin bgflower {
+    background: {
+        image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAABgFBMVEUAAAD/AAD/AAD/YV7/cnD/BwD/Myz/AAD/QDv/S0b/AAD/FgL/JBn/AAD/PDf/1dT/Lyf/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/CQD/AAD/AAD/DQD/QTz/GxL/CQD/CwD/AQD/FgP/PTj/KSH/Miv/XFn/bmz/enj/Z2T/ZmP/T0v/Ggr/EQD/LCT/JRv/BgD/raz/n5//vr3/jIv/a2n/yMf/sK//AAD/AAD/CQD/AAD/CgD/IBT/FQL/AAD/Qj3/AQD/HQ//Mir/KiL/Jhz/Jx7/LCT/NzH/Ozb/Skb/fHr/qKf/U1D/mJf/fHn/fHr/yMf/UE3/LCP/AAD/Lib/19f/ZWL/AAD/CAD/EAD/DQD/Ihf/GQf/Lyf/BAD/HhD/UE3/AAD/RUD/AAD/HxL/Ozb/MCn/TUn/KSD/dXP/QDv/bGr/Mir/DgD/Xlv/o6P/KB//Xlv/KiL/a2n/cG7/Skb/mpn/Yl//Z2T/39//yMf/t7b/r64H+MuMAAAAgHRSTlMA3M12asYDxyYB2r6RJSAqi8zL5eLX3tTs1cjF2dHDIgXMxMC4l5GKfW9pTSAcvbumml40MioUEQsI6efOw7mxqaWknpyblpaNiYWBc2BYV0pEOi4oKCQjHRnu1sC/vLOsp6ahn5uXlZKSi4J3d3V0cGZlZWFdV049ODgrJSUlEts0kt0AAAHOSURBVEjH7dNFf9swGMfxR1ocarJNYHbsMDXQBpvCyrS1a1fumJmZ99Y3JTvaSY495Hfy4fvxQX8JurVe5891a0CnKD5dy2/39HECyQjJYX0Hpua5jNzjCz19vqLTwJwRI+MwNSHTgHuxzH89htajzkuOhZ5ZjB5FXTqKlnu6XVGuAFzV8DWApeuPwbPWYTDofL0ZXguWXnH80flxl90LOkG3DstQVE3TlgimyZSBScCWKKZ2UnLJxBkoINVCFqYxhFRKdBTGFCMUdgnxCfDJZGVz0ohdyubmVXx/I5vSU9mNiFsrW+BDiQO/U1Fy8dD7mcS4v7OkLcf9Hv3T+A/EbyuXxZnM7gE80JZD4JVPxlu1t5K+UPuUCePN2oc0exj31AVF5YxjqjJmGQQxJrNFb12cTUpJiRBq2hQTw5bMG486nvqkXq83d1NWZv9XnpNis9H41gxB39pVsfzOtFi+b62DUun0+y30rNR+I25V/7bNdDVdpVhK35lTyZcBusBlpjFM9WmNceVzfyyWn3zRXT4SebK2N0gj8hvKY2LLwYnlfwqdG1ZfEC/tYmikR3qkz44mXZ0bShe4tQ/HCbbuH0bvrj49gdPnq++G+fdfsExJlgE4HFgAAAAASUVORK5CYII=');
+        repeat: no-repeat;
+        size: 23px;
+        position: 5px 5px;
+    }
+    @supports(font-size: 1vw) {
+        background: {
+            size: pxToVw(23);
+            position: pxToVw(5) pxToVw(5);
+        }
+    }
+}
+
+#container {
+    padding-top: 45px;
+}
+
+#top {
+    padding-bottom: 76%;
+    position: relative;
+    background: {
+        image: url('//miz-image.b0.upaiyun.com/xplan/nianhuo//top.jpg');
+        size: cover;
+        repeat: no-repeat;
+    }
+    #tab {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        width: 100%;
+        overflow: hidden;
+        dd {
+            flex: 1;
+            text-align: center;
+            background-color: #ed9247;
+            font-size: 14px;
+            padding: 0 6px;
+            position: relative;
+            top: 5px;
+            line-height: 28px;
+            height: 28px;
+            &:nth-child(2) {
+                margin: 0 7px;
+            }
+            &.on {
+                padding-top: 5px;
+                top: 0;
+                line-height: 24px;
+                background: {
+                    image: url('//miz-image.b0.upaiyun.com/xplan/nianhuo/tabon.png');
+                    // size: cover;
+                    size:100% 100%;
+                    color: transparent;
+                }
+            }
+        }
+    }
+    img {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 70px;
+    }
+    em {
+        width: 100%;
+        height: 55px;
+        display: block;
+        position: absolute;
+        top: 60%;
+        background: {
+            image: url('//miz-image.b0.upaiyun.com/xplan/nianhuo/gandaji.png');
+            size: contain;
+            repeat: no-repeat;
+            position: center;
+        }
+    }
+}
+
+#products {
+    position: relative;
+    p {
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        word-spacing: 10px;
+        position: relative;
+        padding:22px 0 10px;
+        background-color: #a61515;
+    }
+    dl {
+        >dd {
+            background-color: #ffe7cb;
+            padding: 17px 25px;
+            margin: 0 15px;
+            @include bgflower;
+            display: flex;
+            position: relative;
+            margin-bottom: 5px;
+
+            
+
+            &:before,
+            &:after,
+            i {
+                content: '';
+                position: absolute;
+                @include bgflower;
+                width: 23px;
+                height: 23px;
+                right: 5px;
+                top: 5px;
+                transform: rotateY(180deg);
+                background-position: 0 0;
+            }
+            &:after {
+                transform: rotateZ(270deg);
+                left: 0;
+                top: auto;
+                bottom: 5px;
+            }
+            i {
+                bottom: 5px;
+                top: auto;
+                transform: rotate(180deg);
+            }
+            em {
+                height: 105px;
+                border: 2px solid #f4b38c;
+                flex: 0 0 105px;
+                background-size:cover;
+                position: relative;
+
+                display: block;//4.3
+                float: left;//4.3
+                width: 35%;//4.3
+                label{
+                    position: absolute;
+                    color:#fff;
+                    background-color:rgba(0,0,0,0.4);
+                    line-height: 10px;
+                    font-style: normal;
+                    right: 0;
+                    border-radius:(10px 0 0 10px);
+                    bottom: 10px;
+                    font-size:12px;
+                    padding: 5px;
+                    z-index: 2;
+                }
+            }
+            li {
+                font-size: 12px;
+                padding-left: 12px;
+                color:#333;
+                line-height: 1;
+                padding-bottom: 8px;
+                &:first-child {
+                    font-size: 16px;
+                    padding-bottom: 13px;
+                    padding-top: 5px;
+                }
+                span {
+                    color: #d2272d;
+                    font-size: 15px;
+                }
+                &:last-child {
+                    display: flex;
+                    padding-bottom: 0;
+                    a {
+                        color: #fff;
+                        background-color: #df182b;
+                        text-decoration: none;
+                        font-size: 15px;
+                        border-radius: 30px;
+                        padding: 7px 34px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    span {
+        display: block;
+        font-size: 11px;
+        opacity: 0.9;
+    }
+}
+
+.animated {
+    animation-duration: 300ms !important;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0,25%,0)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0,25%,0)
+    }
+}
+
+.fadeOutDown {
+    animation-name: fadeOutDown
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+.fadeIn {
+    animation-name: fadeIn
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+.fadeOut {
+    animation-name: fadeOut
+}
+
+@supports(font-size: 1vw) {
+    #container {
+        padding-top: pxToVw(45);
+    }
+    #top {
+        #tab {
+            dd {
+                font-size: pxToVw(14);
+                padding: 0 pxToVw(6);
+                top: pxToVw(5);
+                line-height: pxToVw(28);
+                height: pxToVw(28);
+                &:nth-child(2) {
+                    margin: 0 pxToVw(7);
+                }
+                &.on {
+                    padding-top: pxToVw(5);
+                    line-height: pxToVw(24);
+                }
+            }
+        }
+        img {
+            top: pxToVw(70);
+        }
+        em {
+            height: pxToVw(55);
+        }
+    }
+    #products {
+        p {
+            font-size: pxToVw(14);
+            word-spacing: pxToVw(10);
+        }
+        dl {
+            >dd {
+                padding: pxToVw(17) pxToVw(25);
+                margin: 0 pxToVw(15);
+                margin-bottom: pxToVw(5);
+                &:before,
+                &:after,
+                i {
+                    width: pxToVw(23);
+                    height: pxToVw(23);
+                    right: pxToVw(5);
+                    // top: pxToVw(5);
+                }
+                &:after {
+                    bottom: pxToVw(5);
+                }
+                i {
+                    bottom: pxToVw(5);
+                }
+                em {
+                    height: pxToVw(105);
+                    border-width: pxToVw(2);
+                    // flex-basis: pxToVw(105);
+                    flex:0 0 pxToVw(105);
+                    label{
+                        line-height: pxToVw(10);
+                        border-radius:(pxToVw(10) 0 0 pxToVw(10));
+                        bottom: pxToVw(10);
+                        font-size:pxToVw(12);
+                        padding: pxToVw(5);
+                    }
+                }
+                li {
+                    font-size: pxToVw(12);
+                    padding-left: pxToVw(12);
+                    padding-bottom: pxToVw(8);
+                    &:first-child {
+                        font-size: pxToVw(16);
+                        padding-bottom: pxToVw(13);
+                        padding-top: pxToVw(5);
+                    }
+                    span {
+                        font-size: pxToVw(15);
+                    }
+                    &:last-child {
+                        a {
+                            font-size: pxToVw(15);
+                            border-radius: pxToVw(30);
+                            padding: pxToVw(7) pxToVw(34);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        padding: pxToVw(20);
+        font-size: pxToVw(13);
+        span {
+            font-size: pxToVw(11);
+        }
+    }
+}

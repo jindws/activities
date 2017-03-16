@@ -1,0 +1,22 @@
+{
+  "name": "myvuee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server  --open --hot",
+    "build": "webpack --progress --hide-modules",
+    "pro": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.pro.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.1.10",
+    "vue-router": "^2.2.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.2.1"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.28.0"
+  }
+}

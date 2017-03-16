@@ -1,0 +1,17 @@
+{
+  "name": "save",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "react": "15.4.2",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.3.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.0",
+    "vue":"",
+    "vuex":""
+  }
+}

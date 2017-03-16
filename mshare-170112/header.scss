@@ -1,0 +1,71 @@
+@mixin border_s($top:0, $right:0, $bottom:0, $left:0) {
+    position: relative;
+    &:before {
+        content: '' !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: 1px solid #ccc;
+        border-width: $top $right $bottom $left;
+        width: 200%;
+        height: 200%;
+        transform: scale(.5);
+        box-sizing: border-box;
+        transform-origin: 0 0;
+    }
+}
+
+header {                        
+    @include border_s(0, 0, 1px);
+    position: fixed;
+    width: 100%;
+    z-index: 20;
+    background: #fff;
+    dl {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+        font-size: 18px;
+    }
+    #return {
+        width: 10px;
+        height: 17px;
+        padding: 15px;
+        position: relative;
+        background: {
+            image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAiCAMAAABodAmPAAAAY1BMVEUAAADHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zpBlTOAAAAIHRSTlMACPDhwQO2LRcP2tOqnDozJyIc9ermxrvsrqGTj0GLaEPM9UcAAACDSURBVCjPjc9JAoMgEERRBBTFWVGcktT9T5msu3qRv3y7b2RNDmw7vGKxFlZ4xIXNkWW4WVql2jZJO9nKDimwHWQX7GhEvW6DtBsr2YP1Je2tmPFoG8K6xa6qL/7ViMy6RFSKOk1nh1PVriSdNlUTLtaQ0BvWQ9PR4lb1YR0sPor+zr5pVAmmsTWOKQAAAABJRU5ErkJggg==);
+            size: 10px 17px;
+            repeat: no-repeat;
+            position: center;
+        }
+    }
+    #share {
+        width: 22px;
+        height: 21px;
+        margin-right: 15px;
+        position: relative;
+    }
+}
+
+@supports(font-size: 1vw) {
+    header {
+        dl {
+            height:pxToVw(45);
+            font-size: pxToVw(18);
+        }
+        #return {
+            width: pxToVw(10);
+            height: pxToVw(17);
+            padding: pxToVw(15);
+            background: {
+                size: pxToVw(10) pxToVw(17);
+            }
+        }
+        #share {
+            width: pxToVw(22);
+            height: pxToVw(21);
+            margin-right: pxToVw(15);
+        }
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>米享活动</title>
+</head>
+<script>
+var Mizlicai;
+(function(Mizlicai) {
+    var userKey = /userKey=([^&]*)/.exec(location.search);
+    if (userKey) {
+        if (userKey[1].length == 0)
+            localStorage.removeItem("auth");
+        else
+            localStorage.setItem("auth", userKey[1]);
+    }
+    var osKey = /os=([^&]+)/.exec(location.search);
+    if (osKey) {
+        osKey = osKey[1];
+    } else {
+        osKey = sessionStorage.getItem("osKey") || "H5";
+    }
+    sessionStorage.setItem("osKey", osKey);
+
+    function login(userKey) {
+        try {
+            if (userKey && userKey.length > 0) {
+                localStorage.setItem("time", (+new Date()).toString());
+                localStorage.setItem("auth", userKey);
+            } else
+                localStorage.removeItem("auth");
+        } catch (e) {
+            alert("您当前处于无痕浏览模式，可能会导致一些异常");
+        }
+    }
+    Mizlicai.login = login;
+})(Mizlicai || (Mizlicai = {}));
+</script>
+
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+
+<body>
+    <header>
+        <svg v-cloak @click='back' viewBox="0 0 1024 1024" data-reactid=".0.0.0.0.0">
+            <path class="svgpath" fill="#9c9cb6" d="M362.4585 486.9818 748.0193 873.143 701.0671 920.0932 315.3035 534.3467 315.3035 534.3467 270.0073 489.0524 713.77 45.3083 759.0662 90.6026Z" data-reactid=".0.0.0.0.0.0"></path>
+        </svg>
+        <span v-cloak>{{title}}</span>
+        <i v-cloak @click='share'></i>
+    </header>
+    <section id="main">
+        <a v-for='item in items' @click='toGoods(item)' href='javascript:;' ></a>
+    </section>
+</body>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/vue-2.1.6.min.js"></script>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/jquery-3.1.min.js"></script>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/jweixin.js"></script>
+<script src="https://h5.mizlicai.com/activity/mother/share.js"></script>
+<script src='js.min.js'></script>
+<!-- <script src=https://miz-cdn.b0.upaiyun.com/xplan/activity/xmas.min.js></script> -->
+
+</html>

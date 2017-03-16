@@ -1,0 +1,91 @@
+@mixin border_s($top:0, $right:0, $bottom:0, $left:0) {
+    position: relative;
+    &:before {
+        content: '' !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: 1px solid #ccc;
+        border-width: $top $right $bottom $left;
+        width: 200%;
+        height: 200%;
+        transform: scale(.5);
+        box-sizing: border-box;
+        transform-origin: 0 0;
+    }
+}
+
+header {
+    @include border_s(0, 0, 1px);
+    position: fixed;
+    width: 100%;
+    z-index: 888;
+    background: #fff;
+    dl {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+        font-size: 18px;
+    }
+    #return {
+        width: 10px;
+        height: 17px;
+        padding: 15px;
+        position: relative;
+        background: {
+            image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAiCAMAAABodAmPAAAAY1BMVEUAAADHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zHx8zpBlTOAAAAIHRSTlMACPDhwQO2LRcP2tOqnDozJyIc9ermxrvsrqGTj0GLaEPM9UcAAACDSURBVCjPjc9JAoMgEERRBBTFWVGcktT9T5msu3qRv3y7b2RNDmw7vGKxFlZ4xIXNkWW4WVql2jZJO9nKDimwHWQX7GhEvW6DtBsr2YP1Je2tmPFoG8K6xa6qL/7ViMy6RFSKOk1nh1PVriSdNlUTLtaQ0BvWQ9PR4lb1YR0sPor+zr5pVAmmsTWOKQAAAABJRU5ErkJggg==);
+            size: 10px 17px;
+            repeat: no-repeat;
+            position: center;
+        }
+    }
+    #share {
+        width: 22px;
+        height: 21px;
+        margin-right: 15px;
+        position: relative;
+        // background: {
+        //     image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAqCAMAAAAd31JXAAAAh1BMVEUAAADU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1NjU1Nhx3hf3AAAALHRSTlMAEPD7IPfhoRUHkIBMA7c8KQzIhdtbQi7s55l5cmk11M6+srEa8q6nk4tUY2Jk2OcAAAGmSURBVDjL5ZTZdoIwFEWvRBKgCIIWnOehw/7/7ysIrVEjy/eeF1ZuNpfk5ATpUOxHA3lRb7Dtvc4yHr7KJppj/BI7Igq2qPl9PehXOvwNw3i28SGScAbn0N7wzueitkVvNAHg+FUNlorNX5MgAZRXafJ+KXx7MI3ifmtYMWG6atEx/mh4NTI7wTq2je2v8ZsuO7TtSy9HLe6OINvDZ1VLUaVVDnMmqcsSkp4YPuyiwSvFoXefjWjsNl+owp0Nj7EoAmsFmpETXSjyQMCKxxIdtm8Vc5Ns03ZgwIRyy65ZXp6l8QCILqNDbY3ILVviZ7WfJ2Bq5qeGXWm8Qu7ZBft6y0c4p4M6Z9HFgTqYD+yZ6lOfsK3nGnbQOPvIboglgreB/LLtiTlYTbmE5TXr+yYJLnZK7DO371CTMHdfTSI2mx/kCZuD37cP3ITyjJ1xG6TK7KfsNziueDLOHGzgJfIoj76DlVBeZ+X/soqgk7QJTdGNDvGvGTDd7IidtFqh0s62PrH1V5p0wOVNorMcZQrnBoP0QzG2pzJDh3Z3XVYzrXBIaWMv7weV3zf9xKDHHgAAAABJRU5ErkJggg==);
+        //     size: contain;
+        //     repeat: no-repeat;
+        // }
+    }
+}
+
+.share {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 10px;
+    z-index: 4;
+    background-size: 44%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    bottom: 60px;
+    background-color: rgba(255, 180, 0, 0.9);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvAAAApVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+4/eNVAAAANnRSTlMAXTfnIY7ikPspHTz3697UiYNkWyTzyL2We2wzLioYE9iqomFQSkMRDQfPuLCdf3JYA+/dFcGHydpcAAAB/UlEQVRIx+2V25KqQAxFIxdlwDsoIOJdEXVGHZ38/6edBIWjUAPkfdZLV1OuCqZ3aKjFrr81QYw1QlS9jQMFtPAjI9TgnQYmdL3GW81Ad29qM0PtDt61+RKfLFbrOzw5dzBP+O7F08l41MaE28neAzHAAos75NlbWUmj51CXkDh86q3/9IO8NNvpYwMzhhC7tOgxlKEMeviKoUBAy6n80Faj9OeHY5vXBoBNi1Uiad5TOvQ3U3NpJK8IsKZ1+qt0HapJme4gnNO2xZtJepTKb9ZshcyYWs7wziCrQguSTvR8ePD1aGKVtk1i4M1fLIOsCm3NXWte0q2PxACqtAsSP1nqp9zDFlRpF651iiDFoZbqUKVZ3/R8uX+dnuMEqrT5gh4fI8hRocWcdncPQu3Ms2yCQMv+2AakmpuckFRbGxTDWKpFXcS2BVKNs/cJUk2jAKtamXJNtXzz/TJpuxoWtYjy0ZmVaB8UVqug2VXNt3hWC5pLxZwyTSGhkdeUNrdRrPU5VmLtOkbs3cWaMuJ3FGs+omHLtSPN2Uys8bfABbFmNhG/5BrYPydTpmX8aVItYK3k7i4Z0wtsk0tcAI9WAGaHxllQbvdNoxU97JsdmloNzHDC9/mZc9hFwmiqNWgaSBxmQDg9FDEmizFb7frSqD+HFGfje3oNPH+rAfMPYEmI/HLRwIEAAAAASUVORK5CYII=);
+}
+
+@supports(font-size: 1vw) {
+    header {
+        dl {
+            height:pxToVw(45);
+            font-size: pxToVw(18);
+        }
+        #return {
+            width: pxToVw(10);
+            height: pxToVw(17);
+            padding: pxToVw(15);
+            background: {
+                size: pxToVw(10) pxToVw(17);
+            }
+        }
+        #share {
+            width: pxToVw(22);
+            height: pxToVw(21);
+            margin-right: pxToVw(15);
+        }
+    }
+}

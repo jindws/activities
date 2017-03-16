@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>免费领台历</title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+</head>
+<script>
+var Mizlicai;
+(function(Mizlicai) {
+    var userKey = /userKey=([^&]*)/.exec(location.search);
+    if (userKey) {
+        if (userKey[1].length == 0)
+            localStorage.removeItem("auth");
+        else
+            localStorage.setItem("auth", userKey[1]);
+    }
+    var osKey = /os=([^&]+)/.exec(location.search);
+    if (osKey) {
+        osKey = osKey[1];
+    } else {
+        osKey = sessionStorage.getItem("osKey") || "H5";
+    }
+    sessionStorage.setItem("osKey", osKey);
+
+    function login(userKey) {
+        try {
+            if (userKey && userKey.length > 0) {
+                localStorage.setItem("time", (+new Date()).toString());
+                localStorage.setItem("auth", userKey);
+            } else
+                localStorage.removeItem("auth");
+        } catch (e) {
+            alert("您当前处于无痕浏览模式，可能会导致一些异常");
+        }
+    }
+    Mizlicai.login = login;
+})(Mizlicai || (Mizlicai = {}));
+</script>
+
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+
+<body>
+    <section>
+        <em v-cloak @click='shares' id="share">{{share}}</em>
+        <em v-cloak @click='myRule' id="rule">{{rule}}</em>
+        <transition v-cloak name="fade">
+            <div class='dialog' v-if='showRule'>
+                <em id='theRule'>
+                    <i id="close" @click='closeRule'></i>
+                    <a href='/?payNumber=""&source=""#/products'></a>
+                </em>
+            </div>
+        </transition>
+        <transition v-cloak name="fade">
+            <div class='dialog' v-if='showOver'>
+                <em id='theOver'>
+                <i id="close" @click='closeOver'></i>
+            </em>
+            </div>
+        </transition>
+        <transition v-cloak name="fade">
+            <div class='dialog' v-if='showAddress'>
+                <em id='theRule' class='bg-address'>
+                <i id="close" @click='closeAddress'></i>
+                <a href="javascript:;"></a>
+            </em>
+            </div>
+            <a @click='getNow' href="javascript:;" id="get"></a>
+        </transition>
+        <transition v-cloak name="fade">
+            <div class='dialog' v-if='showSuccess'>
+                <em id='theSuccess'>
+                <i id="close" @click='closeSuccess'></i>
+            </em>
+            </div>
+        </transition>
+        <transition v-cloak name="fade">
+            <div class='dialog' v-if='showTooMore'>
+                <em id='theTooMore'>
+                <i id="close" @click='closeTooMore'></i>
+            </em>
+            </div>
+        </transition>
+        <transition v-cloak name="slide-fade">
+            <em v-if='!needLogin' id="login" @click='toLogin'><i></i></em>
+        </transition>
+        <transition v-cloak name="fade">
+            <div v-if='errorMsg'>
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div class="weui-dialog__bd">{{errorMsg}}</div>
+                    <div class="weui-dialog__ft">
+                        <a @click='closeError' href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+                    </div>
+                </div>
+            </div>
+        </transition>
+        <transition v-cloak name="fade">
+            <div v-if='addressConfirmShow' id="dialogs">
+                <div>
+                    <div class="weui-mask"></div>
+                    <div class="weui-dialog weui-skin_android">
+                        <div class="weui-dialog__hd"><strong class="weui-dialog__title">温馨提示</strong></div>
+                        <div class="weui-dialog__bd">
+                            确认使用该地址?
+                        </div>
+                        <div class="weui-dialog__ft">
+                            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click='getConfirm'>确认</a>
+                            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click='closeAddressConfirm'>取消</a>
+                        </div>
+                    </div>
+                </div>
+        </transition>
+    </section>
+</body>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/vue-2.1.6.min.js"></script>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/jquery-3.1.min.js"></script>
+<script src="https://miz-cdn.b0.upaiyun.com/miz-js-lib/jweixin.js"></script>
+<script src='rili-activity-1.1.min.js'></script>
+<!-- <script src=https://miz-cdn.b0.upaiyun.com/activity/rili-activity-1.1.min.js></script> -->
+
+
+</html>

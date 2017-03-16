@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+header {
+    background: #fff;
+    height: 45px;
+    top: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    position: fixed;
+    z-index: 9;
+}
+
+header:before {
+    content: '' !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid #ddd;
+    border-width: 0 0 1px 0;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    box-sizing: border-box;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+header span {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    display: block;
+}
+
+header svg {
+    width: 26px;
+    height: 26px;
+    margin-left: 5px;
+    position: relative;
+}
+
+header svg,
+header i {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 30px;
+    flex: 0 0 30px;
+}
+
+i {
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAUVBMVEUAAACcnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLacnLYwHa2qAAAAGnRSTlMAQJCw3fuX7aYsaKWDA1gcFPVQCwnJEPC4oI84UHIAAADNSURBVDjL7dVJjgIxEETRsEnjgeqaobvj/gdFQkaGMpBGYsnfpfQWuQsAMXhukxW5Yf5BqXesm07I/fFQdHSUZLYNuNbxRgfKiMfV2jPhdbZo0kBpT+4rrOqCdV2wrpsxDhdd43Xuwq7KkbbCS/fLJ7ktjkLyGOyj+g2Ons4OeNI9XoQ+nzru6Awa8TLRohXP5NiMLY9oxjv+v4Ffvnxa2/EwSTs25Bd/8edxEqPjqo/gPBN6iT4PkN4oDHna1JLQxTKaWq5HnmM1HyJwBlHLIv9fKeH0AAAAAElFTkSuQmCC);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#main {
+    padding-top: 380px;
+    margin-top: 45px;
+    background-image: url("https://miz-image.b0.upaiyun.com/xplan/1212/1225.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 18%;
+}
+
+#main a {
+    width: 100%;
+    height: 190px;
+    display: inline-block;
+    position: relative;
+}
+
+#main a:last-child {
+    height: 230px;
+}
+
+@supports (font-size: 1vw) {
+    header {
+        height: 12vw;
+    }
+    header span {
+        font-size: 4.8vw;
+    }
+    header svg {
+        width: 6.93333vw;
+        height: 6.93333vw;
+        margin-left: 1.33333vw;
+    }
+    header svg,
+    header i {
+        -webkit-flex-basis: 8vw;
+        flex-basis: 8vw;
+    }
+    header i {
+        width: 5.9vw;
+        height: 5.9vw;
+    }
+    #main {
+        padding-top: 101.3vw;
+        margin-top: 12vw;
+    }
+    #main a {
+        height: 50.66667vw;
+    }
+    #main a:last-child {
+        height: 61.3vw;
+    }
+    [v-cloak] {
+        display: none;
+    }
+}

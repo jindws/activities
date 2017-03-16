@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Block表达式</title>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+<script src='./node_modules/jquery/dist/jquery.js'></script>
+<script src='./node_modules/handlebars/dist/handlebars.js'></script>
+
+<script id="template" type="text/x-handlebars-template">
+    <ul>
+        {{#programme}}
+        <li>{{{language}}}</li>
+        {{/programme}}
+    </ul>
+</script>
+<script>
+    $(function() {
+        const data = {
+            programme: [{
+                    language: "<p>111</p>"
+                },
+                {
+                    language: "<p>222</p>"
+                },
+                {
+                    language: "<p>333</p>"
+                }
+            ]
+        }
+        var myTemplate = Handlebars.compile($("#template").html());
+        $('#test').html(myTemplate(data));
+    });
+</script>
+
+
+</html>

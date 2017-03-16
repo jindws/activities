@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Block-helper</title>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+<script src='./node_modules/jquery/dist/jquery.js'></script>
+<script src='./node_modules/handlebars/dist/handlebars.js'></script>
+
+<script id="template" type="text/x-handlebars-template">
+    <ul>
+        {{#each programme}}
+        <li>{{language}}</li>
+        {{/each}}
+    </ul>
+
+    <!-- {{#if info}}
+    <div>{{info}}</div>
+    {{else}}
+    <p>{{error}}</p>
+    {{/if}} -->
+    <!-- <div class="entry">
+    <h1>{{title}}</h1> {{#with author}}
+    <h2>By {{!firstName}} {{lastName}}</h2> {{/with}}
+    </div> -->
+</script>
+<script>
+    $(function() {
+        const data = {
+            programme: [{
+                    language: "JavaScript"
+                },
+                {
+                    language: "HTML"
+                },
+                {
+                    language: "CSS"
+                }
+            ]
+        }
+
+        // const data = {
+        //     info: '读取数据成功',
+        //     error: "数据取出错误"
+        // }
+
+        // const data = {
+        //     title: "My first post!",
+        //     author: {
+        //         firstName: "Charles",
+        //         lastName: "Jolley"
+        //     }
+        // }
+        var myTemplate = Handlebars.compile($("#template").html());
+
+        // Handlebars.registerHelper("debug", function(optionalValue) {
+        //     console.log("Current Context");
+        //     console.log("====================");
+        //     console.log(this);
+        //     if (optionalValue) {
+        //         console.log("Value");
+        //         console.log("====================");
+        //         console.log(optionalValue);
+        //     }
+        // });
+        $('#test').html(myTemplate(data));
+    });
+</script>
+
+
+</html>
