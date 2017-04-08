@@ -8,7 +8,7 @@
     "start": "webpack-dev-server  --open --hot",
     "dev": "webpack --progress --hide-modules",
     "pro": "webpack --progress --hide-modules --config webpack.build.js",
-    "pro-dev": "webpack-dev-server --open --hot --config webpack.build.js"
+    "pro-dev": "webpack-dev-server --progress --open --hot --config webpack.build.js"
   },
   "devDependencies": {
     "animate.css": "^3.5.2",

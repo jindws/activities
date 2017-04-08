@@ -4,12 +4,12 @@
     <div class="swiper-container" :style='{height:height}'>
         <div class="swiper-wrapper" :style='{height:height}'>
             <!-- 1 -->
-            <div class="swiper-slide" id='page_1'>
-                <section id="time" class='animated lightSpeedIn' :style='{top:bili*0.2+"px"}'>{{year}}年{{month}}月</section>
+            <div class="swiper-slide" id='page_1' :style='{height:height,paddingBottom:paddingBottom}'>
+                <label id="time" class='animated lightSpeedIn' :style='{top:bili*0.2+"px"}'>{{year}}年{{month}}月</label>
                 <section id="date" class='animated zoomIn' :style='{top:bili*0.59+"px"}'>数据截止至<br/>{{year}}/{{month}}/{{day}} 24:00:00</section>
             </div>
             <!-- 2 -->
-            <div class="swiper-slide" id='page_2'>
+            <div class="swiper-slide" id='page_2' :style='{height:height,paddingBottom:paddingBottom}'>
                 <section class="all" :style='{top:bili*0.2+"px"}'>
                     <div>
                         {{month}}月累计成交额(元)
@@ -25,7 +25,7 @@
                 <div id="main_2" :style='{maxHeight:bili*0.9+"px"}'></div>
             </div>
             <!-- 3 -->
-            <div class="swiper-slide" id='page_3'>
+            <div class="swiper-slide" id='page_3' :style='{height:height,paddingBottom:paddingBottom}'>
                 <section class="all" :style='{top:bili*0.2+"px"}'>
                     <div>
                         {{month}}月累计为投资人赚取收益(元)
@@ -42,7 +42,7 @@
                 <div id="main_3" :style='{maxHeight:bili*0.9+"px"}'></div>
             </div>
             <!-- 4 -->
-            <div class="swiper-slide" id='page_4'>
+            <div class="swiper-slide" id='page_4' :style='{height:height,paddingBottom:paddingBottom}'>
                 <section class="all" :style='{top:bili*0.2+"px"}'>
                     <div>
                         {{month}}月累计新增用户数(人)
@@ -62,34 +62,34 @@
                 <div v-if='slideNum === 3' id="main_4" :style='{maxHeight:bili*0.85+"px"}' class='animated bounceIn'></div>
             </div>
             <!-- 5 -->
-            <div class="swiper-slide" id='page_5'>
-                <p class='intitle'>{{month}}月产品更新</p>
+            <div class="swiper-slide" id='page_5' :style='{height:height,paddingBottom:paddingBottom}' v-if='!productList'>
+                <p class='intitle'>{{month}}月产品更新{{json.productList&&json.productList[0].updateProductNames}}</p>
                 <div class="swiper-5">
                     <div class="swiper-wrapper">
-                        <!-- <div v-for='item in json.productList' class="swiper-slide">
+                          <div v-if='year==2017&&month==2' class="swiper-slide">
+                              <img src="https://image.mizlicai.com/activities/yunying-17/5_01.png" alt="">
+                              <p>新增特色理财专栏</p>
+                              <div>月月升、月月返产品优先推荐</div>
+                          </div>
+                          <div v-if='year==2017&&month==2' class="swiper-slide">
+                              <img src="https://image.mizlicai.com/activities/yunying-17/5_02.png" alt="">
+                              <p>优惠智选</p>
+                              <div>智能选优惠 收益享最佳</div>
+                          </div>
+                        <div v-else v-for='item in json.productList' class="swiper-slide">
                             <img :src="item.updateProductImage" alt="">
                             <p>{{item.updateProductName}}</p>
                             <div>{{item.updateProductInfo}}</div>
-                        </div> -->
+                        </div>
 
-                        <div class="swiper-slide">
-                            <img src="https://image.mizlicai.com/activities/yunying-17/5_01.png" alt="">
-                            <p>新增特色理财专栏</p>
-                            <div>月月升、月月返产品优先推荐</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://image.mizlicai.com/activities/yunying-17/5_02.png" alt="">
-                            <p>优惠智选</p>
-                            <div>智能选优惠 收益享最佳</div>
-                        </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
             <!-- 6 -->
-            <div class="swiper-slide" id='page_6'>
+            <div class="swiper-slide" id='page_6' :style='{height:height,paddingBottom:paddingBottom}'>
                 <p class='intitle'>{{month}}月热门资产</p>
-                <dl v-if='slideNum === 5'>
+                <dl v-if='slideNum === (5 -productList)'>
                     <dd class='animated fadeInUp' id='page_6_1'>
                         <label>最畅销资产</label>
                         <p>{{monthlyReport.bestSellingProduct}}</p>
@@ -109,9 +109,9 @@
                 </dl>
             </div>
             <!-- 7 -->
-            <div class="swiper-slide" id='page_7'>
+            <div class="swiper-slide" id='page_7' :style='{height:height,paddingBottom:paddingBottom}'>
                 <p class='intitle'>{{month}}月龙虎榜</p>
-                <dl v-if='slideNum === 6'>
+                <dl v-if='slideNum === (6 -productList)'>
                     <dd class='animated fadeInUp' id='page_7_1'>
                         <div class="title">累计投资最多</div>
                         <p class='name'>{{monthlyReport.mostInvestmentUserName}}{{monthlyReport.mostInvestmentUserGender === '男'?'先生':'女士'}}</p>
@@ -133,7 +133,7 @@
                     </dd>
                 </dl>
             </div>
-            <div class="swiper-slide" id='page_8'>
+            <div class="swiper-slide" id='page_8' :style='{height:height,paddingBottom:paddingBottom}'>
                 <p class='intitle'>{{monthlyReport.month}}月活动</p>
                 <div class="swiper-8">
                     <div class="swiper-wrapper">
@@ -163,7 +163,7 @@
                 <i id="down" class='animated pulse' @click='swiper_8_next'></i>
                 <em @click='moreActivity'>查看更多活动<i></i></em>
             </div>
-            <div class="swiper-slide" id='page_9'>
+            <div class="swiper-slide" id='page_9' :style='{height:height,paddingBottom:paddingBottom}'>
                 <section>
                     <img :src="json.customerService.customerServiceImage" alt="">
                     <p>本月明星客服:{{json.customerService.customerServiceName}}</p>
@@ -178,8 +178,8 @@
                     </dl>
                 </section>
             </div>
-            <div class="swiper-slide" id='page_10'>
-                <img v-if='slideNum === 9' class='animated zoomIn' src="//miz-image.b0.upaiyun.com/activities/yunying17y1m/10-1.png" alt="">
+            <div class="swiper-slide" id='page_10' :style='{height:height,paddingBottom:paddingBottom}'>
+                <img v-if='slideNum === (9-productList)' class='animated zoomIn' src="//image.mizlicai.com/activities/yunying17y1m/10-1.png" alt="">
                 <a v-if='weixin' href="//h5.mizlicai.com/#/products" id="detail"></a>
                 <!-- <a href="//h5.mizlicai.com/activity/yuebao/2016" id="before">查看2016运营年报<i></i></a> -->
                 <a :href="lasthref" id="before">查看上月运营报告<i></i></a>
@@ -187,7 +187,7 @@
         </div>
     </div>
     <section id="yema" v-if='slideNum<9' @click='swiper_next'>
-        {{'0'+(slideNum+1)}}<label> / 10</label><i></i>
+        {{'0'+(slideNum+1)}}<label> / {{10-productList}}</label><i></i>
     </section>
 </section>
 </template>
@@ -247,6 +247,10 @@ export default {
             lasthref: '',
             lastmonth: '',
             lastyear: '',
+            paddingBottom: 0,
+            productList:0,
+            notStart:true,
+            //{{json.productList&&json.productList[0].updateProductNames}}
         }
     },
     methods: {
@@ -262,28 +266,6 @@ export default {
         shares() {
             window.MizShare.share();
         },
-        // getAppversion() {
-        //     return true;
-        //     const app = navigator.appVersion;
-        //     const ios = 'mizlicai_iOS';
-        //     const and = 'mizlicai_Android';
-        //     const ios_start = app.indexOf(ios);
-        //     const and_start = app.indexOf(and);
-        //     if (ios_start !== -1) { //ios
-        //         return gets(ios, ios_start);
-        //     } else if (and_start !== -1) {
-        //         return gets(and, and_start);
-        //     } else {
-        //         return false;
-        //     }
-        //
-        //     function gets(version, start) {
-        //         const iphone = app.indexOf('iPhone') !== -1;
-        //         const end = app.substring(start).indexOf(')');
-        //         const vers = app.substring(start + version.length + 1, start + end);
-        //         return iphone ? vers >= 2.8 : vers > 282
-        //     }
-        // },
         format_number(n) {
             const b = parseInt(n).toString();
             const len = b.length;
@@ -318,6 +300,7 @@ export default {
                 color: ['#1c9bfd'],
                 tooltip: {
                     trigger: 'axis',
+                    formatter: '{b}<br />{a}:{c}亿',
                     axisPointer: {
                         type: 'shadow'
                     }
@@ -382,7 +365,8 @@ export default {
                     data: [lastyear, thisyear]
                 }],
             };
-            myChart.setOption(option);
+            myChart.setOption(option)
+            // setTimeout(()=>myChart.setOption(option),5000)
         },
         echarts_3() {
             const main = document.getElementById('main_3');
@@ -400,6 +384,8 @@ export default {
                 color: ['#1c9bfd'],
                 tooltip: {
                     trigger: 'axis',
+                    // formatter:'{c}万',
+                    formatter: '{b}<br />{a}:{c}万',
                     axisPointer: { // 坐标轴指示器，坐标轴触发有效
                         type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
                     }
@@ -606,8 +592,35 @@ export default {
                     end = Math.min(end, theStart.indexOf('?'));
                 }
             }
-
             return location.search.substring(start + item.length + 1, end !== -1 ? start + end : location.search.length);
+        },
+        start(){
+          this.notStart=false;
+          this.swiper = new Swiper('.swiper-container', {
+              iOSEdgeSwipeDetection: true,
+              height: 500,
+              autoHeight: true,
+              onTransitionEnd: swiper => {
+                  this.slideNum = swiper.activeIndex;
+                  switch (swiper.activeIndex) {
+                      case 1:
+                          this.echarts_2();
+                          this.num_animate(this.monthlyReport.accumulatedAmount, 'data_2', 'chengjiao');
+                          break;
+                      case 2:
+                          this.echarts_3();
+                          this.num_animate(this.monthlyReport.accumulatedInterest, 'data_3', 'profit');
+                          break;
+                      case 3:
+                          setTimeout(() => this.echarts_4(), 200);
+                          this.num_animate(this.monthlyReport.sumNewUser, 'data_4', 'sum_add');
+                          break;
+                      case (5 - this.productList):
+                          setTimeout(() => this.echarts_6(), 200);
+                          break;
+                  }
+              },
+          })
         }
     },
     created() {
@@ -633,71 +646,70 @@ export default {
             },
             body: `year=${this.year}&month=${this.month}`
         }).then(res => {
-                if (res.status !== 200 && location.search.substring(1).indexOf(nowpage) === -1) {
-                    location.search = nowpage;
+            if (res.status !== 200 && location.search.substring(1).indexOf(nowpage) === -1) {
+                location.search = nowpage;
+                return;
+            }
+            res.json().then(data => {
+                const re = data.monthlyReport;
+                const month = +this.month !== 1 ? this.month - 1 : 12;
+                const year = +this.month !== 1 ? this.year : this.year - 1;
+                const search = `year=${year}&month=${month}`;
+                this.lasthref = `${location.origin}${location.pathname}?${search}`;
+                if (new Date(year, month) >= new Date(2017, 2)) {
+                    this.lasthref = `${location.origin}${location.pathname}?${search}`;
+                } else {
+                    this.lasthref = 'https://h5.mizlicai.com/activity/yuebao/17-1m.html';
+                }
+                this.lastmonth = month;
+                this.lastyear = year;
+                if (!re) {
+                    location.href = this.lasthref;
                     return;
                 }
-                res.json().then(data => {
-                    const re = data.monthlyReport;
-                    const month = +this.month !== 1 ? this.month - 1 : 12;
-                    const year = +this.month !== 1 ? this.year : this.year - 1;
-                    const search = `year=${year}&month=${month}`;
-                    this.lasthref = `${location.origin}${location.pathname}?${search}`;
-                    if (new Date(year, month) >= new Date(2017, 2)) {
-                        this.lasthref = `${location.origin}${location.pathname}?${search}`;
-                    } else {
-                        this.lasthref = 'https://h5.mizlicai.com/activity/yuebao/17-1m.html';
-                    }
-                    this.lastmonth = month;
-                    this.lastyear = year;
-                    if (!re) {
-                        location.href = this.lasthref;
-                        return;
-                    }
-                    this.day = (new Date((new Date(re.year, re.month)) - 1)).getDate();
-                    this.monthlyReport = re;
-                    this.json = JSON.parse(re.json);
-                    setTimeout(() => {
-                        this.swiper_8 = new Swiper('.swiper-8', {
-                            iOSEdgeSwipeDetection: true,
-                            height: 450,
-                            direction: 'vertical',
-                            loop: true,
-                            effect: 'flip',
-                            flip: {
-                                slideShadows: true,
-                                limitRotation: true,
+                this.day = (new Date((new Date(re.year, re.month)) - 1)).getDate();
+                this.monthlyReport = re;
+                this.json = JSON.parse(re.json);
+                setTimeout(() => {
+                    this.swiper_8 = new Swiper('.swiper-8', {
+                        iOSEdgeSwipeDetection: true,
+                        height: $(window).height() * 0.85,
+                        direction: 'vertical',
+                        loop: true,
+                        effect: 'flip',
+                        flip: {
+                            slideShadows: true,
+                            limitRotation: true,
+                        }
+                    });
+                    // if (t.json.productList.length <= 1) return;
+                    this.swiper_5 = new Swiper('.swiper-5', {
+                        iOSEdgeSwipeDetection: true,
+                        pagination: '.swiper-pagination',
+                        paginationClickable: false,
+                        effect: 'cube',
+                        cube: {
+                            slideShadows: true,
+                            shadow: false,
+                            shadowOffset: 100,
+                            shadowScale: 0.6
+                        },
+                        onTouchEnd: swiper => {
+                            // if (-swiper.translate === $(window).width() * (t.json.productList.length - 1)) {
+                            //     t.swiper_next();
+                            // } else if (swiper.translate === 0) {
+                            //     t.swiper.slidePrev();
+                            // }
+                            if (-swiper.translate === $(window).width() * (2 - 1)) {
+                                this.swiper_next();
+                            } else if (swiper.translate === 0) {
+                                this.swiper.slidePrev();
                             }
-                        });
-                        // if (t.json.productList.length <= 1) return;
-                        this.swiper_5 = new Swiper('.swiper-5', {
-                            iOSEdgeSwipeDetection: true,
-                            pagination: '.swiper-pagination',
-                            paginationClickable: false,
-                            effect: 'cube',
-                            cube: {
-                                slideShadows: true,
-                                shadow: false,
-                                shadowOffset: 100,
-                                shadowScale: 0.6
-                            },
-                            onTouchEnd:swiper=> {
-                                // if (-swiper.translate === $(window).width() * (t.json.productList.length - 1)) {
-                                //     t.swiper_next();
-                                // } else if (swiper.translate === 0) {
-                                //     t.swiper.slidePrev();
-                                // }
-                                if (-swiper.translate === $(window).width() * (2 - 1)) {
-                                    this.swiper_next();
-                                } else if (swiper.translate === 0) {
-                                    this.swiper.slidePrev();
-                                }
-                            }
-                        })
-                    }, 500);
-                })
-            }
-        ).catch(function(error) {
+                        }
+                    })
+                }, 500);
+            })
+        }).catch(function(error) {
             if (location.search.substring(1).indexOf(nowpage) !== -1) {
                 location.search = nowpage;
                 return;
@@ -708,34 +720,32 @@ export default {
     },
     mounted() {
         $('body').on('touchmove', e => e.preventDefault());
-        this.swiper = new Swiper('.swiper-container', {
-            iOSEdgeSwipeDetection: true,
-            // lazyLoading: true,
-            // lazyLoadingInPrevNext: true,
-            // lazyLoadingInPrevNextAmount: 2,
-            // initialSlide: 2,
-            height: 500,
-            onTransitionEnd: swiper => {
-                this.slideNum = swiper.activeIndex;
-                switch (swiper.activeIndex) {
-                    case 1:
-                        this.echarts_2();
-                        this.num_animate(this.monthlyReport.accumulatedAmount, 'data_2', 'chengjiao');
-                        break;
-                    case 2:
-                        this.echarts_3();
-                        this.num_animate(this.monthlyReport.accumulatedInterest, 'data_3', 'profit');
-                        break;
-                    case 3:
-                        setTimeout(() => this.echarts_4(), 200);
-                        this.num_animate(this.monthlyReport.sumNewUser, 'data_4', 'sum_add');
-                        break;
-                    case 5:
-                        setTimeout(() => this.echarts_6(), 200);
-                        break;
-                }
-            },
-        })
+        // this.swiper = new Swiper('.swiper-container', {
+        //     iOSEdgeSwipeDetection: true,
+        //     height: 500,
+        //     autoHeight: true,
+        //     onTransitionEnd: swiper => {
+        //         this.slideNum = swiper.activeIndex;
+        //         switch (swiper.activeIndex) {
+        //             case 1:
+        //                 this.echarts_2();
+        //                 this.num_animate(this.monthlyReport.accumulatedAmount, 'data_2', 'chengjiao');
+        //                 break;
+        //             case 2:
+        //                 this.echarts_3();
+        //                 this.num_animate(this.monthlyReport.accumulatedInterest, 'data_3', 'profit');
+        //                 break;
+        //             case 3:
+        //                 setTimeout(() => this.echarts_4(), 200);
+        //                 this.num_animate(this.monthlyReport.sumNewUser, 'data_4', 'sum_add');
+        //                 break;
+        //             case 5:
+        //                 setTimeout(() => this.echarts_6(), 200);
+        //                 break;
+        //         }
+        //     },
+        // })
+        this.paddingBottom = $(window).height() - $('#page_1').height() + 'px';
         this.mheight = $(window).height() - $(window).width() * 0.12 + 'px';
         const sc = ($(window).height() - $(window).width() * 0.12) / $(window).width() / 1.6;
         this.bili = sc * $(window).width();
@@ -743,7 +753,17 @@ export default {
     watch: {
         slideNum(val) {
             this.googleAnalytics(`${document.title}-${val+1}`); //埋点分享
+            this.paddingBottom = $(window).height() - $(`#page_${val+1}`).height() + 'px';
         },
+        json(val){
+            this.productList = ((val.productList&&val.productList[0].updateProductNames)||(this.year==2017&&this.month==2))?0:1;
+            this.notStart = false;
+        },
+        notStart(){
+          setTimeout(()=>{
+            this.start();
+          },1000)
+        }
     }
 }
 </script>

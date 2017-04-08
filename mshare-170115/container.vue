@@ -1,9 +1,5 @@
 <template>
 	<section class="container" :class='nohead?"nohead":""'>
-        <!-- <i></i>
-        <dl>
-        	<dd v-for='item in list' @click='toXplan(item)'></dd>
-        </dl> -->
 				<a href="https://h5.mizlicai.com/feature/xplan5/#/order"></a>
     </section>
 </template>
@@ -11,12 +7,6 @@
 
 <script>
 	export default {
-		// data(){
-	  //       return{
-	  //          list:[430,431,429,428,427,432],
-	  //          nohead:false,
-	  //       }
-	  //   },
 	    methods:{
 	    	getAppversion(){
 	            const app = navigator.appVersion;

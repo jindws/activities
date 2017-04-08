@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    // background: #970000;
     font-family: 'PINGFANG SC', 'MICROSOFT YAHEI';
     -webkit-tap-highlight-color: transparent;
 }
@@ -25,16 +24,16 @@ p {
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
 }
-
 @function pxToVw($px) {
-    @return $px/750*100*2vw;
+     @return $px/750*100*2vw;
 }
-
 @import './header.scss';
+
 .container {
     padding-bottom: 321%;
     position: relative;
     top: 45px;
+
     &.nohead {
         top: 0;
         z-index: 100;
@@ -43,7 +42,8 @@ p {
         image: url('//miz-image.b0.upaiyun.com/xplan/activity/214_1.jpg');
         size: cover;
     }
-    #detail{
+
+    #detail {
         position: absolute;
         width: 100%;
         top: 14%;
@@ -70,58 +70,68 @@ p {
         from {
             transform: scale(0);
         }
+
         to {
-            transform: scale(1)
+            transform: scale(1);
         }
     }
+
     dl {
         flex-wrap: wrap;
         width: 100%;
         position: absolute;
         top: 19%;
+
         dd {
             height: 186px;
         }
     }
+
     ul {
         display: flex;
         height: 170px;
         width: 100%;
         top: 81%;
         position: absolute;
+
         li {
-            flex:1;
+            flex: 1;
         }
     }
 }
-.flower{
+
+.flower {
     padding-bottom: 338%;
     top: 45px;
     position: relative;
+
     &.nohead {
         top: 0;
         z-index: 100;
     }
-    background:{
-        image:url('//miz-image.b0.upaiyun.com/xplan/activity/214_2.jpg');
-        size:cover;
+    background: {
+        image: url('//miz-image.b0.upaiyun.com/xplan/activity/214_2.jpg');
+        size: cover;
     }
 }
-
 @supports(font-size:1vw) {
     .container {
         top: pxToVw(45);
-        #detail{
+
+        #detail {
             height: pxToVw(40);
         }
+
         dd {
             height: pxToVw(186) !important;
         }
-        ul{
+
+        ul {
             height: pxToVw(170);
         }
     }
-    .flower{
-        top:pxToVw(45);
+
+    .flower {
+        top: pxToVw(45);
     }
 }

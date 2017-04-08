@@ -61,7 +61,7 @@ module.exports = {
         inline: true
     },
     devtool:'hidden-source-map',
-    // devtool: 'nosources-source-map',
+    // devtool: 'eval',
     watch: true,
     plugins: [
         new HtmlWebpackPlugin({template: './index.html'}),

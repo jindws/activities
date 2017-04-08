@@ -3,16 +3,13 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    // entry: './js.js',
     entry:{
         js:'./js.js',
-        // share:'./mizshare.js'
     },
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/',
         filename: 'dist.js'
-        // filename: 'mizshare.min.js'
     },
     module: {
         rules: [{
@@ -59,10 +56,6 @@ module.exports = {
         //     'process.env': {
         //         NODE_ENV: '"production"'
         //     }
-        // }),
-        // new webpack.DefinePlugin({
-        //     // minimize: true,
-        //     __aaa__:true,
         // }),
         // new webpack.optimize.UglifyJsPlugin({
         //     sourceMap: true,

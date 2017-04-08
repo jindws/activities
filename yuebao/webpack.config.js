@@ -61,7 +61,7 @@ module.exports = {
           template: './index.html'
         }),
         new webpack.DefinePlugin({
-            __DEV__:true,
+            __DEV__:false,
             // 'process.env': {
             //     NODE_ENV: '"production"'
             // }
