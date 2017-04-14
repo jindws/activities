@@ -1,21 +1,27 @@
 <template>
 <section class="container">
     <i id="share" @click='share'></i>
-		<a href="javascript:;" @click='start'></a>
+    <a :class={end:end} href="javascript:;" @click='start'></a>
 </section>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            end: new Date() > new Date(2017, 3, 13)
+        }
+    },
     methods: {
         share() {
             window.MizShare.share();
         },
-				start(){
-					location.href = location.origin+'/?payNumber=#/products';
-				}
+        start() {
+            if (this.end) return;
+            location.href = location.origin + '/?payNumber=#/products';
+        }
     },
-    mounted() {
+    created() {
         var shareObj = {
             sharetext: '春季福利第一波,投资送超值红包!', // 分享标题
             sharedesc: '【米庄理财】投资送30元超值红包,多投多得,上不封顶!', // 分享描述

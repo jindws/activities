@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>米庄公益 邀您同行</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.mizlicai.com/miz-css-lib/miz-activity-base.css">
+    <link rel="stylesheet" href="https://cdn.mizlicai.com/miz-css-lib/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="http://mizlicai.chinacloudsites.cn/activity/17-04/0428/starChildren/css/starChildren.css">
+</head>
+
+<body>
+    <div class="container">
+        <img id="shareBtn" src="http://mizlicai.chinacloudsites.cn/activity/17-04/0428/starChildren/images/share.png">
+        <img id="signBtn" src="./images/sign.png">
+        <div class="swiper-container swiper-container-vertical" id="main">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide swiper-slide-active" id="firstPage">
+                    <div class="swiper-container swiper-container-vertical swiper-container-free-mode" id="one">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide swiper-slide-active" id="secondPage">
+                                <img src="./images/pic_1.png">
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar" style="opacity: 0;">
+                            <div class="swiper-scrollbar-drag" style="height: 176.4px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide swiper-slide-next" id="secondPage">
+                    <div class="swiper-container swiper-container-vertical swiper-container-free-mode" id="two">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide swiper-slide-active">
+                                <img src="./images/pic_2.png">
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar" style="opacity: 0;">
+                            <div class="swiper-scrollbar-drag" style="height: 176.4px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.mizlicai.com/miz-js-lib/jquery-2.2.3.min.js"></script>
+    <!-- <script src="https://h5.mizlicai.com/activity/mother/share.js"></script> -->
+    <!-- <script src="https://cdn.mizlicai.com/miz-js-lib/mizshare.min.js"></script> -->
+    <script src="https://cdn.mizlicai.com/miz-js-lib/miz-share.js"></script>
+    <!-- <script src='./Spring-170408/dist/share.js'></script> -->
+    <script src="https://cdn.mizlicai.com/miz-js-lib/swiper-3.3.1.min.js"></script>
+    <script src="https://cdn.mizlicai.com/miz-js-lib/jweixin.js"></script>
+    <script src="http://mizlicai.chinacloudsites.cn/activity/17-04/0428/starChildren/js/starChildren.js"></script>
+    <script>
+        //google埋点
+        if (location.host === "h5.mizlicai.com") {
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-77505833-1', 'auto');
+            ga('send', 'pageview');
+        }
+    </script>
+</body>
+
+</html>

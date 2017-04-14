@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.mizlicai.com/miz-css-lib/swiper-3.3.1.min.css">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        position: relative;
+        background-color: #24034c;
+    }
+
+    img {
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div id="swiper1" class='swiper-container'>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div id="swiper2" class='swiper-container'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="http://mizlicai.chinacloudsites.cn/activity/17-04/0428/starChildren/images/pic_1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="swiper3" class='swiper-container'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="http://mizlicai.chinacloudsites.cn/activity/17-04/0428/starChildren/images/pic_2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.mizlicai.com/miz-js-lib/swiper-3.3.1.min.js"></script>
+<script>
+    document.body.addEventListener('ontouchmove', function(e) {
+        e.preventDefault();
+    })
+    window.onload = function() {
+        document.getElementById('swiper1').style.height = window.innerHeight + 'px';
+        var oSwiper = new Swiper('#swiper1', {
+            direction: 'vertical',
+            height: window.innerHeight,
+            onSetTransition: function(swiper) {
+                swiper.params.onlyExternal = true;
+                swiper.disableMousewheelControl();
+            }
+        })
+        var mySwiper = new Swiper('#swiper2', {
+            direction: 'vertical',
+            // height: window.innerHeight,
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            // freeMode: true,
+            // freeModeMomentum: false,
+            // mousewheelControl: true,
+            // mousewheelSensitivity: 0.5,
+            height: window.innerHeight,
+            onTouchEnd: function(swiper) {
+                if (swiper.translate < (swiper.height - swiper.slides[0].scrollHeight)) {
+                    oSwiper.slideTo(1);
+                }
+            }
+        })
+        var mySwiper3 = new Swiper('#swiper3', {
+            direction: 'vertical',
+            // height: window.innerHeight,
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            freeMode: true,
+            freeModeMomentum: false,
+            // mousewheelControl: true,
+            // mousewheelSensitivity: 0.5,
+            height: window.innerHeight,
+            onTouchEnd: function(swiper) {
+                console.log(swiper.translate)
+                if (swiper.translate > 0) {
+                    oSwiper.slideTo(0);
+                }
+            }
+        })
+    }
+</script>
+
+</html>

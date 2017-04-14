@@ -4,14 +4,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry:{
-        js:'./js.js',
-        // share:'./share.js'
+        spring:'./js.js',
+        share:'./share.js'
+
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/',
+        publicPath: '//cdn.mizlicai.com/activity/',
         filename: '[name].js'
-        // filename: 'mizshare.min.js'
     },
     module: {
         rules: [{
@@ -22,8 +22,8 @@ module.exports = {
             }
         }, {
             test: /\.js$/,
-            // loader: 'babel-loader',
-            // exclude: /node_modules/
+            loader: 'babel-loader',
+            exclude: /node_modules/
         }, {
             test: /\.(png|jpg|gif|svg)$/,
             loader: 'file-loader',
@@ -36,33 +36,34 @@ module.exports = {
         }],
     },
 
-    // resolve: {
-    //     alias: {
-    //         'vue$': 'vue/dist/vue.common.js',
-    //         // vue:'vue/dist/vue.js'
-    //     }
-    // },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.common.js',
+            // vue:'vue/dist/vue.js'
+        }
+    },
     devServer: {
         historyApiFallback: true,
         noInfo: true,
         inline: true,
     },
-    // devtool: '#eval-source-map',
-    devtool:'hidden-source-map',
+    // devtool:'hidden-source-map',
+    devtool:'nosources-source-map',
     watch: true,
     plugins:[
         new HtmlWebpackPlugin({
           template: './index.html'
-        })
-        // new webpack.DefinePlugin({
-        //     // minimize: true,
-        //     __aaa__:true,
-        // }),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     sourceMap: true,
-        //     compress: {
-        //         warnings: false
-        //     }
-        // }),
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            compress: {
+                warnings: false
+            }
+        }),
     ]
 }

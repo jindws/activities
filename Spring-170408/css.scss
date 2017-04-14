@@ -29,12 +29,11 @@ p {
      @return $px/750*100*2vw;
 }
 @import './header.scss';
-$images: 'https://image.mizlicai.com/activities/a201704/spring';
+$images: '//image.mizlicai.com/activities/a201704/spring';
 
 .container {
     padding-bottom: 252%;
     position: relative;
-    // top: 45px;
     background: {
         image: url('#{$images}/spring.png');
         size: cover;
@@ -58,11 +57,20 @@ $images: 'https://image.mizlicai.com/activities/a201704/spring';
         position: absolute;
         top: 52%;
         height: 6%;
+        background: {
+            image: url('#{$images}/start.png');
+            size: contain;
+            position: center;
+            repeat: no-repeat;
+        }
+
+        &.end {
+            background-image: url('#{$images}/end.png');
+        }
     }
 }
 @supports(font-size:1vw) {
     .container {
-        // top: pxToVw(45);
         #share {
             top: pxToVw(10);
             right: pxToVw(10);
