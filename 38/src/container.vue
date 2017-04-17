@@ -80,7 +80,7 @@ export default {
                 class: 'caidai_3'
             }],
             error: {
-                show: false,
+                show: true,
                 outclass: 'fadeIn',
                 inclass: 'flipInX',
                 title: '',

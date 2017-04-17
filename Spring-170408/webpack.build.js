@@ -3,65 +3,54 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry:{
-        js:'./js.js',
+    entry: {
+        js: './js.js',
+        // share:'./share.js'
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: './',
-        filename: 'dist.js'
+        // publicPath: '/',
+        filename: '[name].js'
+        // filename: 'mizshare.min.js'
     },
     module: {
-        rules: [{
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-                // vue-loader options go here
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'babel-loader!vue-loader'
+            }, {
+                test: /\.js$/,
+                loader: 'babel-loader'
+            },{
+                test: /\.(css|scss)$/,
+                loader: "style-loader!css-loader!postcss-loader!sass-loader"
             }
-        }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/
-        }, {
-            test: /\.(png|jpg|gif|svg)$/,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]?[hash]'
-            }
-        }, {
-            test: /\.(css|scss)$/,
-            loader: "style-loader!css-loader!postcss-loader!sass-loader"
-        }],
+        ]
     },
 
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.common.js',
-            // vue:'vue/dist/vue.js'
+            'vue$': 'vue/dist/vue.common.js'
         }
     },
     devServer: {
         historyApiFallback: true,
         noInfo: true,
-        inline: true,
+        inline: true
     },
-    // devtool:'hidden-source-map',
-    devtool:'nosources-source-map',
+    devtool:'hidden-source-map',
     watch: true,
-    plugins:[
-        new HtmlWebpackPlugin({
-          template: './index.html'
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
+    plugins: [
+        new HtmlWebpackPlugin({template: './index.html'}),
+        new webpack.DefinePlugin({__DEV__: true}),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             compress: {
-                warnings: false
-            }
+                warnings: false,
+                drop_console: true
+            },
+            beautify:false,
+            comments:false
         }),
     ]
 }
